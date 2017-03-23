@@ -1,0 +1,27 @@
+{
+  "name": "vue-truncate-collapsed",
+  "version": "1.0.0",
+  "description": "A simple component that truncates your text and adds a 'Read More/Show Less' clickable.",
+  "main": "truncate.vue",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kavalcante/vue-truncate-collapsed.git"
+  },
+  "keywords": [
+    "vue",
+    "vue2",
+    "vue-component",
+    "vue.js",
+    "truncate",
+    "collapsed"
+  ],
+  "author": "João Vitor Cavalcante",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kavalcante/vue-truncate-collapsed/issues"
+  },
+  "homepage": "https://github.com/kavalcante/vue-truncate-collapsed#readme"
+}
