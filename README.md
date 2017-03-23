@@ -52,8 +52,8 @@ new Vue({
 
 | Option        | Default       | Type   | Description  |
 | :------------ | :------------ | :----- | :--------- |
-| __text__     | no default value | String | The text that will be truncated. |
-| __length__   | 100 | Number | Length of text after truncate. |
+| __text__     | no default value | string | The text that will be truncated. |
+| __length__   | 100 | number | Length of text after truncate. |
 | __clamp__    | Read More | string | Link that will be after the text with a link to expand. |
 | __less__   | Show Less | string | Link that will be after the text when it's expand, when click text collapses. |
 
