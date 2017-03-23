@@ -43,7 +43,7 @@ new Vue({
 
 ## USAGE
 
-```
+```html
 <truncate clamp="..." length="90" less="Show Less" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam modi consequuntur quis porro explicabo iusto repudiandae odio nobis, assumenda iure totam, eum expedita quae at nostrum excepturi corrupti unde et."></truncate>
 ```
 
