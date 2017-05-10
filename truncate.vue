@@ -1,7 +1,7 @@
 <template>
 <p>
-  <span v-if="!show">{{truncate(text)}} <a v-if="text.length => length" @click="toggle()">{{clamp || 'Read More'}}</a></span>
-  <span v-if="show">{{text}} <a @click="toggle()" v-if="text.length => length">{{less || 'Show Less'}}</a></span>
+  <span v-if="!show">{{truncate(text)}} <a v-if="text.length >= length" @click="toggle()">{{clamp || 'Read More'}}</a></span>
+  <span v-if="show">{{text}} <a @click="toggle()" v-if="text.length >= length">{{less || 'Show Less'}}</a></span>
 </p>
 </template>
 
