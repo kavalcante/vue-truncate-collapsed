@@ -64,6 +64,7 @@ new Vue({
 | __length__   | 100 | number | Length of text after truncate. |
 | __clamp__    | Read More | string | Link that will be after the text with a link to expand. |
 | __less__   | Show Less | string | Link that will be after the text when it's expand, when click text collapses. |
+| __type__   | text | string | Either `text` or `html`. To change whether to treat the input from `text` attribute as text or raw HTML. |
 
 ## License
 
