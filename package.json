@@ -25,6 +25,6 @@
   },
   "homepage": "https://github.com/kavalcante/vue-truncate-collapsed#readme",
   "dependencies": {
-    "html-to-text": "^3.3.0"
+    "html2plaintext": "^1.1.1"
   }
 }
