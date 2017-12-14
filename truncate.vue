@@ -9,7 +9,17 @@
 export default {
 
   name: 'truncate',
-  props: { 'text': String, 'clamp': String, 'length': Number, 'less': String },
+  props: {
+    text: String,
+    clamp: String,
+    length: Number,
+    less: String,
+    html: String,
+    type: {
+      type: String,
+      default: 'text'
+    }
+  },
   methods: {
     truncate(string) {
       if (string) {
