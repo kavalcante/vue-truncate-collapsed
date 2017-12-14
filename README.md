@@ -43,8 +43,16 @@ new Vue({
 
 ## USAGE
 
+#### Text
+
 ```html
 <truncate clamp="..." :length="90" less="Show Less" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam modi consequuntur quis porro explicabo iusto repudiandae odio nobis, assumenda iure totam, eum expedita quae at nostrum excepturi corrupti unde et."></truncate>
+```
+
+#### Raw HTML
+
+```html
+<truncate clamp="..." :length="90" less="Show Less" type="html" text="<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> <p> Quam modi consequuntur quis porro explicabo iusto repudiandae odio nobis, assumenda iure totam, eum expedita quae at nostrum excepturi corrupti unde et.</p>"></truncate>
 ```
 
 ## Attributes
