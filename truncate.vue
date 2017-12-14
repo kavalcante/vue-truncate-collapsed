@@ -9,8 +9,11 @@
       <a @click="toggle()" v-if="text.length >= length">{{less || 'Show Less'}}</a>
     </p>
     <div v-else-if="show && type === 'html'">
-      <div v-html="text"></div>
+      <div v-html="text"  v-if="text.length >= length"></div>
       <a @click="toggle()" v-if="text.length >= length">{{less || 'Show Less'}}</a>
+      <p v-else>
+        {{h2p(text)}} 
+      </p>
     </div>
   </div>
 </template>
@@ -51,6 +54,10 @@ export default {
       counter: this.length,
     };
   },
+
+  method() {
+    h2p:h2p
+  }
 };
 </script>
 
