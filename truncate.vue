@@ -16,7 +16,7 @@
 </template>
 
 <script>
-var htmlToText = require('html-to-text');
+var h2p = require('html2plaintext')
 
 export default {
 
@@ -34,7 +34,7 @@ export default {
   methods: {
     truncate(string) {
       if (string) {
-        if(this.type == 'html') string = htmlToText.fromString(string);
+        if(this.type == 'html') string = h2p(string);
         return string.toString().substring(0, this.length || 100);
       }
 
