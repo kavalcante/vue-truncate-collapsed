@@ -1,11 +1,23 @@
 <template>
-<p>
-  <span v-if="!show">{{truncate(text)}} <a v-if="text.length >= length" @click="toggle()">{{clamp || 'Read More'}}</a></span>
-  <span v-if="show">{{text}} <a @click="toggle()" v-if="text.length >= length">{{less || 'Show Less'}}</a></span>
-</p>
+  <div>
+    <p v-if="!show">
+      {{truncate(text)}} 
+      <a v-if="text.length >= length" @click="toggle()">{{clamp || 'Read More'}}</a>
+    </p>
+    <p v-if="show && type !== 'html'">
+      {{text}} 
+      <a @click="toggle()" v-if="text.length >= length">{{less || 'Show Less'}}</a>
+    </p>
+    <div v-else-if="show && type === 'html'">
+      <div v-html="text"></div>
+      <a @click="toggle()" v-if="text.length >= length">{{less || 'Show Less'}}</a>
+    </div>
+  </div>
 </template>
 
 <script>
+var htmlToText = require('html-to-text');
+
 export default {
 
   name: 'truncate',
@@ -14,7 +26,6 @@ export default {
     clamp: String,
     length: Number,
     less: String,
-    html: String,
     type: {
       type: String,
       default: 'text'
@@ -23,6 +34,7 @@ export default {
   methods: {
     truncate(string) {
       if (string) {
+        if(this.type == 'html') string = htmlToText.fromString(string);
         return string.toString().substring(0, this.length || 100);
       }
 
