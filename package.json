@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/kavalcante/vue-truncate-collapsed/issues"
   },
-  "homepage": "https://github.com/kavalcante/vue-truncate-collapsed#readme"
+  "homepage": "https://github.com/kavalcante/vue-truncate-collapsed#readme",
+  "dependencies": {
+    "html2plaintext": "^1.1.1"
+  }
 }
