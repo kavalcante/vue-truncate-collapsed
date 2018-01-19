@@ -2,15 +2,15 @@
   <div>
     <p v-if="!show">
       {{truncate(text)}} 
-      <a v-if="text.length >= length" @click="toggle()">{{clamp || 'Read More'}}</a>
+      <a v-if="text.length >= length" @click="toggle()" :class="actionClass">{{clamp || 'Read More'}}</a>
     </p>
     <p v-if="show && type !== 'html'">
       {{text}} 
-      <a @click="toggle()" v-if="text.length >= length">{{less || 'Show Less'}}</a>
+      <a @click="toggle()" v-if="text.length >= length" :class="actionClass">{{less || 'Show Less'}}</a>
     </p>
     <div v-else-if="show && type === 'html'">
       <div v-html="text"  v-if="text.length >= length"></div>
-      <a @click="toggle()" v-if="text.length >= length">{{less || 'Show Less'}}</a>
+      <a @click="toggle()" v-if="text.length >= length" :class="actionClass">{{less || 'Show Less'}}</a>
       <p v-else>
         {{h2p(text)}} 
       </p>
@@ -32,6 +32,10 @@ export default {
     type: {
       type: String,
       default: 'text'
+    },
+    actionClass: {
+      type: String,
+      default: ''
     }
   },
   methods: {
