@@ -65,6 +65,7 @@ new Vue({
 | __clamp__    | Read More | string | Link that will be after the text with a link to expand. |
 | __less__   | Show Less | string | Link that will be after the text when it's expand, when click text collapses. |
 | __type__   | text | string | Either `text` or `html`. To change whether to treat the input from `text` attribute as text or raw HTML. |
+| __class__   | empty string | string | To add a class name to the link that will be after the text is expanded or collapsed. |
 
 ## License
 
