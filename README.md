@@ -19,8 +19,6 @@ Clone or [download](https://github.com/kavalcante/vue-truncate-collapsed/archive
 #### ES6
 ```js
 import truncate from 'vue-truncate-collapsed';
-// or
-import { truncate } from 'vue-truncate-collapsed';
 
 new Vue({
   components: {
@@ -53,6 +51,12 @@ new Vue({
 
 ```html
 <truncate clamp="..." :length="90" less="Show Less" type="html" text="<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> <p> Quam modi consequuntur quis porro explicabo iusto repudiandae odio nobis, assumenda iure totam, eum expedita quae at nostrum excepturi corrupti unde et.</p>"></truncate>
+```
+
+#### Add class to collapsed text
+
+```html
+<truncate class="customClass" clamp="Show more" :length="90" less="Show Less" type="html" text="<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> <p> Quam modi consequuntur quis porro explicabo iusto repudiandae odio nobis, assumenda iure totam, eum expedita quae at nostrum excepturi corrupti unde et.</p>"></truncate>
 ```
 
 #### Add class to collapsed text
