@@ -1,18 +1,20 @@
 <template>
   <div>
-    <p v-if="!show">
-      {{truncate(text)}} 
+    <div v-if="!show">
+      <span :class="textClass">
+        {{truncate(text)}}
+      </span>
       <a v-if="text.length >= length" @click="toggle()">{{clamp || 'Read More'}}</a>
-    </p>
-    <p v-if="show && type !== 'html'">
-      {{text}} 
+    </div>
+    <div v-if="show && type !== 'html'">
+      <span>{{text}}</span>
       <a @click="toggle()" v-if="text.length >= length">{{less || 'Show Less'}}</a>
-    </p>
+    </div>
     <div v-else-if="show && type === 'html'">
       <div v-html="text"  v-if="text.length >= length"></div>
       <a @click="toggle()" v-if="text.length >= length">{{less || 'Show Less'}}</a>
       <p v-else>
-        {{h2p(text)}} 
+        {{h2p(text)}}
       </p>
     </div>
   </div>
@@ -22,9 +24,12 @@
 var h2p = require('html2plaintext')
 
 export default {
-
   name: 'truncate',
   props: {
+    collapsedTextClass: {
+        type: String,
+        required: false
+    },
     text: String,
     clamp: String,
     length: Number,
@@ -32,6 +37,11 @@ export default {
     type: {
       type: String,
       default: 'text'
+    }
+  },
+  computed: {
+    textClass () {
+      return (this.text.length > this.length && this.collapsedTextClass) ? this.collapsedTextClass : '';
     }
   },
   methods: {
