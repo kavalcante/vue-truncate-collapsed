@@ -4,15 +4,15 @@
       <span :class="textClass">
         {{truncate(text)}}
       </span>
-      <a v-if="text.length >= length" @click="toggle()" :class="actionClass">{{clamp || 'Read More'}}</a>
+      <a v-if="text.length >= length" @click="toggle()" :class="actionClass">{{clamp}}</a>
     </div>
     <div v-if="show && type !== 'html'">
       <span>{{text}}</span>
-      <a @click="toggle()" v-if="text.length >= length" :class="actionClass">{{less || 'Show Less'}}</a>
+      <a @click="toggle()" v-if="text.length >= length" :class="actionClass">{{less}}</a>
     </div>
     <div v-else-if="show && type === 'html'">
       <div v-html="text"  v-if="text.length >= length"></div>
-      <a @click="toggle()" v-if="text.length >= length" :class="actionClass">{{less || 'Show Less'}}</a>
+      <a @click="toggle()" v-if="text.length >= length" :class="actionClass">{{less}}</a>
       <p v-else>
         {{h2p(text)}}
       </p>
@@ -27,13 +27,24 @@ export default {
   name: 'truncate',
   props: {
     collapsedTextClass: {
-        type: String,
-        required: false
+      type: String
     },
-    text: String,
-    clamp: String,
-    length: Number,
-    less: String,
+    text: {
+      type: String,
+      required: true
+    },
+    clamp: {
+      type: String,
+      default: 'Read More'
+    },
+    length: {
+      type: Number,
+      default: 100
+    },
+    less: {
+      type: String,
+      default: 'Show Less'
+    },
     type: {
       type: String,
       default: 'text'
@@ -52,7 +63,7 @@ export default {
     truncate(string) {
       if (string) {
         if(this.type == 'html') string = h2p(string);
-        return string.toString().substring(0, this.length || 100);
+        return string.toString().substring(0, this.length);
       }
 
       return '';
