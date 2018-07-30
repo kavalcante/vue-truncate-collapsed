@@ -1,10 +1,16 @@
 {
   "name": "vue-truncate-collapsed",
-  "version": "1.3.0",
+  "version": "2.0.1",
   "description": "A simple component that truncates your text and adds a 'Read More/Show Less' clickable.",
-  "main": "truncate.vue",
+  "main": "dist/vue-truncate-collapsed.min.js",
+  "module": "dist/vue-truncate-collapsed.es.js",
+  "unpkg": "dist/index.min.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:plugin": "webpack --config ./webpack.plugin.config.js  --progress --hide-modules",
+    "build": "rm -rf ./dist && bili && npm run build:plugin"
   },
   "repository": {
     "type": "git",
@@ -23,8 +29,31 @@
   "bugs": {
     "url": "https://github.com/kavalcante/vue-truncate-collapsed/issues"
   },
-  "homepage": "https://github.com/kavalcante/vue-truncate-collapsed#readme",
   "dependencies": {
-    "html2plaintext": "^1.1.1"
+    "html-truncate": "^1.2.2"
+  },
+  "homepage": "https://github.com/kavalcante/vue-truncate-collapsed#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.6",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "bili": "2.2.6",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
+    "eslint": "^5.2.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.1.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-vue": "^4.7.1",
+    "file-loader": "^1.1.4",
+    "rollup-plugin-vue": "^3.0.0",
+    "vue-loader": "^13.0.5",
+    "vue-template-compiler": "^2.4.4",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1",
+    "webpack-merge": "^4.1.3"
   }
 }

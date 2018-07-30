@@ -39,6 +39,13 @@ new Vue({
 })
 ```
 
+#### CDN
+
+```js
+<!-- import JavaScript -->
+<script src="https://unpkg.com/vue-truncate-collapsed"></script>
+```
+
 ## USAGE
 
 #### Text
