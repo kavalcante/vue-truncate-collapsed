@@ -1,6 +1,6 @@
 {
   "name": "vue-truncate-collapsed",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "A simple component that truncates your text and adds a 'Read More/Show Less' clickable.",
   "main": "dist/vue-truncate-collapsed.min.js",
   "module": "dist/vue-truncate-collapsed.es.js",
