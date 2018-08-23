@@ -98,7 +98,10 @@ export default {
       return '';
     },
     toggle() {
-      this.show = !this.show;
+      const toggled = !this.show;
+
+      this.show = toggled;
+      this.$emit('toggle', toggled);
     },
 
     h2p(text) {

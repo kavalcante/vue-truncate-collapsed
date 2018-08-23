@@ -1,5 +1,5 @@
 /*!
- * vue-truncate-collapsed v2.0.0
+ * vue-truncate-collapsed v2.0.1
  * (c) 2018-present João Vitor Cavalcante
  * Released under the MIT License.
  */
@@ -82,7 +82,10 @@ var truncate = { render: function () {
       return '';
     },
     toggle: function toggle() {
-      this.show = !this.show;
+      var toggled = !this.show;
+
+      this.show = toggled;
+      this.$emit('toggle', toggled);
     },
 
     h2p: function h2p$1(text) {
