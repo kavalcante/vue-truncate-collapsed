@@ -90,7 +90,9 @@ export default {
     },
     textLength() {
       if (this.isHTML) {
-        const text = h2p(this.text, 0);
+        // We need the length of the text without the html being considered
+        // This ensures we provide the right calculation for when to show/hide the more link
+        const text = this.text.replace(/<[^>]*>/g, '');
         return text.length;
       }
 
