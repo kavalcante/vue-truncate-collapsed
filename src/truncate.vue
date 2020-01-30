@@ -5,7 +5,7 @@
         {{ truncate(text) }}
       </span>
       <a
-        v-if="text.length >= length"
+        v-if="showToggle && text.length >= length"
         :class="actionClass"
         @click="toggle()">{{ clamp }}</a>
     </div>
@@ -14,14 +14,14 @@
         :class="textClass"
         v-html="truncate(text)" />
       <a
-        v-if="text.length >= length"
+        v-if="showToggle && text.length >= length"
         :class="actionClass"
         @click="toggle()">{{ clamp }}</a>
     </div>
     <div v-if="show && !isHTML">
       <span>{{ text }}</span>
       <a
-        v-if="text.length >= length"
+        v-if="showToggle && text.length >= length"
         :class="actionClass"
         @click="toggle()">{{ less }}</a>
     </div>
@@ -30,7 +30,7 @@
         v-if="text.length >= length"
         v-html="text" />
       <a
-        v-if="text.length >= length"
+        v-if="showToggle && text.length >= length"
         :class="actionClass"
         @click="toggle()">{{ less }}</a>
       <p v-else>
@@ -79,7 +79,6 @@ export default {
   data() {
     return {
       show: false,
-      counter: this.length,
     };
   },
   computed: {
@@ -96,6 +95,9 @@ export default {
       }
 
       return this.text.length;
+    },
+    showToggle() {
+      return this.textLength > this.length;
     },
   },
   methods: {
