@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!show && type !== 'html'">
+    <div v-if="!show && !isHTML">
       <span :class="textClass">
         {{ truncate(text) }}
       </span>
@@ -9,7 +9,7 @@
         :class="actionClass"
         @click="toggle()">{{ clamp }}</a>
     </div>
-    <div v-else-if="!show && type === 'html'">
+    <div v-else-if="!show && isHTML">
       <span
         :class="textClass"
         v-html="truncate(text)" />
@@ -18,14 +18,14 @@
         :class="actionClass"
         @click="toggle()">{{ clamp }}</a>
     </div>
-    <div v-if="show && type !== 'html'">
+    <div v-if="show && !isHTML">
       <span>{{ text }}</span>
       <a
         v-if="text.length >= length"
         :class="actionClass"
         @click="toggle()">{{ less }}</a>
     </div>
-    <div v-else-if="show && type === 'html'">
+    <div v-else-if="show && isHTML">
       <div
         v-if="text.length >= length"
         v-html="text" />
@@ -83,8 +83,19 @@ export default {
     };
   },
   computed: {
+    isHTML() {
+        return type === 'html';
+    },
     textClass() {
-      return (this.text.length > this.length && this.collapsedTextClass) ? this.collapsedTextClass : '';
+      return (this.textLength > this.length && this.collapsedTextClass) ? this.collapsedTextClass : '';
+    },
+    textLength() {
+        if (this.isHTML) {
+            const text = h2p(this.text, 0);
+            return text.length;
+        }
+
+        return this.text.length;
     },
   },
   methods: {
@@ -102,10 +113,6 @@ export default {
 
       this.show = toggled;
       this.$emit('toggle', toggled);
-    },
-
-    h2p(text) {
-      return h2p(text);
     },
   },
 };
