@@ -4,35 +4,35 @@
       <span :class="textClass">
         {{ truncate(text) }}
       </span>
-      <a
+      <button
         v-if="showToggle && text.length >= length"
         :class="actionClass"
-        @click="toggle()">{{ clamp }}</a>
+        @click="toggle">{{ clamp }}</button>
     </div>
     <div v-else-if="!show && isHTML">
       <span
         :class="textClass"
         v-html="truncate(text)" />
-      <a
+      <button
         v-if="showToggle && text.length >= length"
         :class="actionClass"
-        @click="toggle()">{{ clamp }}</a>
+        @click="toggle">{{ clamp }}</button>
     </div>
     <div v-if="show && !isHTML">
       <span>{{ text }}</span>
-      <a
+      <button
         v-if="showToggle && text.length >= length"
         :class="actionClass"
-        @click="toggle()">{{ less }}</a>
+        @click="toggle">{{ less }}</button>
     </div>
     <div v-else-if="show && isHTML">
       <div
         v-if="text.length >= length"
         v-html="text" />
-      <a
+      <button
         v-if="showToggle && text.length >= length"
         :class="actionClass"
-        @click="toggle()">{{ less }}</a>
+        @click="toggle">{{ less }}</button>
       <p v-else>
         {{ h2p(text) }}
       </p>
@@ -119,9 +119,3 @@ export default {
   },
 };
 </script>
-
-<style lang="css" scoped>
-  a {
-    cursor: pointer;
-  }
-</style>
