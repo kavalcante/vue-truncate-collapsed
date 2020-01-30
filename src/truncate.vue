@@ -84,18 +84,18 @@ export default {
   },
   computed: {
     isHTML() {
-        return type === 'html';
+      return this.type === 'html';
     },
     textClass() {
       return (this.textLength > this.length && this.collapsedTextClass) ? this.collapsedTextClass : '';
     },
     textLength() {
-        if (this.isHTML) {
-            const text = h2p(this.text, 0);
-            return text.length;
-        }
+      if (this.isHTML) {
+        const text = h2p(this.text, 0);
+        return text.length;
+      }
 
-        return this.text.length;
+      return this.text.length;
     },
   },
   methods: {
