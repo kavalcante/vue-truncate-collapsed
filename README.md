@@ -77,6 +77,7 @@ new Vue({
 
 | Option        | Default       | Type   | Description  |
 | :------------ | :------------ | :----- | :--------- |
+| __truncated__ | false | boolean | The initial state of the truncation. `true` is collapsed, `false` is expanded. |
 | __text__     | no default value | string | The text that will be truncated. |
 | __length__   | 100 | number | Length of text after truncate. |
 | __clamp__    | Read More | string | Link that will be after the text with a link to expand. |

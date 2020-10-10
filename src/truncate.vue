@@ -47,6 +47,10 @@ export default {
   name: 'Truncate',
 
   props: {
+    truncated: {
+      type: Boolean,
+      default: true
+    },
     collapsedTextClass: {
       type: String,
       default: '',
@@ -75,6 +79,10 @@ export default {
       type: String,
       default: '',
     },
+  },
+  created() {
+    this.show = this.truncated
+    this.toggle(this.truncated)
   },
   data() {
     return {
@@ -112,12 +120,18 @@ export default {
 
       return '';
     },
-    toggle() {
-      const toggled = !this.show;
+    toggle(override) {
+      // use the override value if it is set as a boolean
+      const toggled = typeof override === 'boolean' ? override : !this.show;
 
       this.show = toggled;
       this.$emit('toggle', toggled);
     },
+  },
+  watch: {
+    truncated(value) {
+      this.toggle(value)
+    }
   },
 };
 </script>
