@@ -1,38 +1,38 @@
 <template>
   <div>
-    <div v-if="!show && type !== 'html'">
+    <div v-if="!show && !isHTML">
       <span :class="textClass">
         {{ truncate(text) }}
       </span>
-      <a
-        v-if="text.length >= length"
+      <button
+        v-if="showToggle && text.length >= length"
         :class="actionClass"
-        @click="toggle()">{{ clamp }}</a>
+        @click="toggle">{{ clamp }}</button>
     </div>
-    <div v-else-if="!show && type === 'html'">
+    <div v-else-if="!show && isHTML">
       <span
         :class="textClass"
         v-html="truncate(text)" />
-      <a
-        v-if="text.length >= length"
+      <button
+        v-if="showToggle && text.length >= length"
         :class="actionClass"
-        @click="toggle()">{{ clamp }}</a>
+        @click="toggle">{{ clamp }}</button>
     </div>
-    <div v-if="show && type !== 'html'">
+    <div v-if="show && !isHTML">
       <span>{{ text }}</span>
-      <a
-        v-if="text.length >= length"
+      <button
+        v-if="showToggle && text.length >= length"
         :class="actionClass"
-        @click="toggle()">{{ less }}</a>
+        @click="toggle">{{ less }}</button>
     </div>
-    <div v-else-if="show && type === 'html'">
+    <div v-else-if="show && isHTML">
       <div
         v-if="text.length >= length"
         v-html="text" />
-      <a
-        v-if="text.length >= length"
+      <button
+        v-if="showToggle && text.length >= length"
         :class="actionClass"
-        @click="toggle()">{{ less }}</a>
+        @click="toggle">{{ less }}</button>
       <p v-else>
         {{ h2p(text) }}
       </p>
@@ -79,12 +79,27 @@ export default {
   data() {
     return {
       show: false,
-      counter: this.length,
     };
   },
   computed: {
+    isHTML() {
+      return this.type === 'html';
+    },
     textClass() {
-      return (this.text.length > this.length && this.collapsedTextClass) ? this.collapsedTextClass : '';
+      return (this.textLength > this.length && this.collapsedTextClass) ? this.collapsedTextClass : '';
+    },
+    textLength() {
+      if (this.isHTML) {
+        // We need the length of the text without the html being considered
+        // This ensures we provide the right calculation for when to show/hide the more link
+        const text = this.text.replace(/<[^>]*>/g, '');
+        return text.length;
+      }
+
+      return this.text.length;
+    },
+    showToggle() {
+      return this.textLength > this.length;
     },
   },
   methods: {
@@ -103,16 +118,6 @@ export default {
       this.show = toggled;
       this.$emit('toggle', toggled);
     },
-
-    h2p(text) {
-      return h2p(text);
-    },
   },
 };
 </script>
-
-<style lang="css" scoped>
-  a {
-    cursor: pointer;
-  }
-</style>

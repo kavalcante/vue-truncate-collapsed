@@ -10,7 +10,8 @@
   ],
   "scripts": {
     "build:plugin": "webpack --config ./webpack.plugin.config.js  --progress --hide-modules",
-    "build": "rm -rf ./dist && bili && npm run build:plugin"
+    "build": "rm -rf ./dist && bili && npm run build:plugin",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
