@@ -7,32 +7,40 @@
       <button
         v-if="showToggle && text.length >= length"
         :class="actionClass"
-        @click="toggle">{{ clamp }}</button>
+        @click="toggle"
+      >
+        {{ clamp }}
+      </button>
     </div>
     <div v-else-if="!show && isHTML">
-      <span
-        :class="textClass"
-        v-html="truncate(text)" />
+      <span :class="textClass" v-html="truncate(text)" />
       <button
         v-if="showToggle && text.length >= length"
         :class="actionClass"
-        @click="toggle">{{ clamp }}</button>
+        @click="toggle"
+      >
+        {{ clamp }}
+      </button>
     </div>
     <div v-if="show && !isHTML">
       <span>{{ text }}</span>
       <button
         v-if="showToggle && text.length >= length"
         :class="actionClass"
-        @click="toggle">{{ less }}</button>
+        @click="toggle"
+      >
+        {{ less }}
+      </button>
     </div>
     <div v-else-if="show && isHTML">
-      <div
-        v-if="text.length >= length"
-        v-html="text" />
+      <div v-if="text.length >= length" v-html="text" />
       <button
         v-if="showToggle && text.length >= length"
         :class="actionClass"
-        @click="toggle">{{ less }}</button>
+        @click="toggle"
+      >
+        {{ less }}
+      </button>
       <p v-else>
         {{ h2p(text) }}
       </p>
@@ -41,19 +49,19 @@
 </template>
 
 <script>
-const h2p = require('html-truncate');
+import h2p from "html-truncate";
 
 export default {
-  name: 'Truncate',
+  name: "Truncate",
 
   props: {
     truncated: {
       type: Boolean,
-      default: true
+      default: true,
     },
     collapsedTextClass: {
       type: String,
-      default: '',
+      default: "",
     },
     text: {
       type: String,
@@ -61,7 +69,7 @@ export default {
     },
     clamp: {
       type: String,
-      default: 'Read More',
+      default: "Read More",
     },
     length: {
       type: Number,
@@ -69,20 +77,20 @@ export default {
     },
     less: {
       type: String,
-      default: 'Show Less',
+      default: "Show Less",
     },
     type: {
       type: String,
-      default: 'text',
+      default: "text",
     },
     actionClass: {
       type: String,
-      default: '',
+      default: "",
     },
   },
   created() {
-    this.show = this.truncated
-    this.toggle(this.truncated)
+    this.show = this.truncated;
+    this.toggle(this.truncated);
   },
   data() {
     return {
@@ -91,16 +99,18 @@ export default {
   },
   computed: {
     isHTML() {
-      return this.type === 'html';
+      return this.type === "html";
     },
     textClass() {
-      return (this.textLength > this.length && this.collapsedTextClass) ? this.collapsedTextClass : '';
+      return this.textLength > this.length && this.collapsedTextClass
+        ? this.collapsedTextClass
+        : "";
     },
     textLength() {
       if (this.isHTML) {
         // We need the length of the text without the html being considered
         // This ensures we provide the right calculation for when to show/hide the more link
-        const text = this.text.replace(/<[^>]*>/g, '');
+        const text = this.text.replace(/<[^>]*>/g, "");
         return text.length;
       }
 
@@ -113,25 +123,25 @@ export default {
   methods: {
     truncate(string) {
       if (string) {
-        if (this.type === 'html') return h2p(string, this.length);
+        if (this.type === "html") return h2p(string, this.length);
 
         return string.toString().substring(0, this.length);
       }
 
-      return '';
+      return "";
     },
     toggle(override) {
       // use the override value if it is set as a boolean
-      const toggled = typeof override === 'boolean' ? override : !this.show;
+      const toggled = typeof override === "boolean" ? override : !this.show;
 
       this.show = toggled;
-      this.$emit('toggle', toggled);
+      this.$emit("toggle", toggled);
     },
   },
   watch: {
     truncated(value) {
-      this.toggle(value)
-    }
+      this.toggle(value);
+    },
   },
 };
 </script>
