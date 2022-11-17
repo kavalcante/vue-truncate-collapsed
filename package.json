@@ -50,7 +50,7 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-vue": "^4.7.1",
     "file-loader": "^1.1.4",
-    "rollup-plugin-vue": "^3.0.0",
+    "rollup-plugin-vue": "^6.0.0",
     "vue-loader": "^13.0.5",
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",
